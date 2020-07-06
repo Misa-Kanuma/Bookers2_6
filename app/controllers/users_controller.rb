@@ -4,8 +4,18 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @books = @user.books
-    @book = Book.find(params[:id])
+    # @book = Book.find(params[:id])
     @book_comment = BookComment.new
+  end
+
+  def follower
+  @user = User.find(params[:user_id])
+  @users = @user.followed_user
+  end
+
+  def following
+  @user = User.find(params[:user_id])
+  @users = @user.following_user
   end
 
   def index

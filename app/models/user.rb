@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :following, class_name: "Relationship", foreign_key: "following_id", dependent: :destroy
   has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
   has_many :following_user, through: :following, source: :followed
-  has_many :followed_user, through: :followed, source: :followering
+  has_many :followed_user, through: :followed, source: :following
   attachment :profile_image, destroy: false
 
   #バリデーションは該当するモデルに設定する。エラーにする条件を設定できる。
