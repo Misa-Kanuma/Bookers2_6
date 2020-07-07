@@ -1,10 +1,12 @@
 class SearchController < ApplicationController
-  
+
   def search
   	@model = params["search"]["model"]
-  	@content = params["serch"]["content"]
-  	@how = params["serch"]["how"]
+  	@content = params["search"]["content"]
+  	@how = params["search"]["how"]
   	@datas = search_for(@how, @model, @content)
+    @users = User.all
+    @books = Book.all
   end
 
   private
@@ -12,7 +14,7 @@ class SearchController < ApplicationController
   	if model == 'user'
   		User.where(name: content)
   	elsif model == 'book'
-  		Book.where(body: content)
+  		Book.where(title: content)
   	end
   end
 
@@ -20,7 +22,7 @@ class SearchController < ApplicationController
   	if model == 'user'
   		User.where("name LIKE?", "#{content}%")
   	elsif model == 'book'
-  		Book.where("body LIKE?", "#{content}%")
+  		Book.where("title LIKE?", "#{content}%")
   	end
   end
 
@@ -28,7 +30,7 @@ class SearchController < ApplicationController
   	if model == 'user'
   		User.where("name LIKE?", "%#{content}")
   	elsif model == 'book'
-  		Book.where("body LIKE?", "%#{content}")
+  		Book.where("title LIKE?", "%#{content}")
   	end
   end
 
@@ -36,7 +38,7 @@ class SearchController < ApplicationController
   	if model == 'user'
   		User.where("name LIKE?", "%#{content}%")
   	elsif model == 'book'
-  		Book.where("body LIKE?", "%#{content}%")
+  		Book.where("title LIKE?", "%#{content}%")
   	end
   end
 
