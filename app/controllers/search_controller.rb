@@ -5,8 +5,6 @@ class SearchController < ApplicationController
   	@content = params["search"]["content"]
   	@how = params["search"]["how"]
   	@datas = search_for(@how, @model, @content)
-    @users = User.all
-    @books = Book.all
   end
 
   private

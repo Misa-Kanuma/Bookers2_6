@@ -11,7 +11,7 @@
 			</tr>
 		</thead>
 	<tbody>
-		<% @users.each do |user| %>
+		<% @datas.each do |user| %>
 		<tr>
 			<td><%= attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no-image-mini.jpg") %></td>
 			<td><%= user.name %></td>
@@ -35,7 +35,7 @@
 			</thead>
 
 			<tbody>
-				<% @books.each do |book| %>
+				<% @datas.each do |book| %>
 				<tr>
 					<td>
 						<%= link_to user_path(book.user) do %>
