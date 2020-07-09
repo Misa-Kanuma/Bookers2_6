@@ -4,7 +4,7 @@
 	<td><%= @book.user.name %></td>
 	<td><%= book_comment.comment %></td>
 		<% if book_comment.user == current_user %>
-	<td><%= link_to "Destroy", book_book_comments_path(book_comment.book, book_comment), method: :delete, class: "btn-sm btn-danger" %></td>
+	<td><%= link_to "Destroy", book_book_comments_path(@book.id), method: :delete, remote: true, class: "btn-sm btn-danger" %></td>
 		<% end %>
 		<br>
 	</tr>
